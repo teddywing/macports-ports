@@ -23,9 +23,11 @@ use_configure       no
 build {}
 
 destroot {
+    xinstall -d ${destroot}${prefix}/share/${name}
+
     xinstall -m 644 ${worksrcpath}/incdec.bash \
         ${worksrcpath}/incdec-bindings.bash \
-        ${destroot}${prefix}
+        ${destroot}${prefix}/share/readline-incdec/
     xinstall -m 644 ${worksrcpath}/doc/incdec.7 \
         ${destroot}${prefix}/share/man/man7
 }
@@ -34,9 +36,9 @@ notes "
 The Incdec shell functions must be sourced in order to use them.
 Add the following line to your Bash profile:
 
-    source ${prefix}/incdec.bash
+    source ${prefix}/share/${name}/incdec.bash
 
 To enable the default bindings, also add:
 
-    source ${prefix}/incdec-bindings.bash
+    source ${prefix}/share/${name}/incdec-bindings.bash
 "
