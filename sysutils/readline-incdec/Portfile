@@ -1,0 +1,42 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+
+PortSystem          1.0
+PortGroup           github 1.0
+
+github.setup        teddywing readline-incdec 0.0.1 v
+github.tarball_from archive
+
+categories          sysutils
+platforms           darwin
+license             GPL-3+
+maintainers         @teddywing
+
+description         increment and decrement numbers on the command line
+long_description    Readline bindings to increment and decrement numbers \
+                    on the command line
+
+checksums           rmd160  e90c0a6f9f4d98592e6e9a5b93a3b5e78801d4c6 \
+                    sha256  e9e28ca126cda963ad8a0792a18e5119884137f60586e700bc7da74bce20e413 \
+                    size    664
+
+use_configure       no
+build {}
+
+destroot {
+    xinstall -m 644 ${worksrcpath}/incdec.bash \
+        ${worksrcpath}/incdec-bindings.bash \
+        ${destroot}${prefix}
+    xinstall -m 644 ${worksrcpath}/doc/incdec.7 \
+        ${destroot}${prefix}/share/man/man7
+}
+
+notes "
+The Incdec shell functions must be sourced in order to use them.
+Add the following line to your Bash profile:
+
+    source ${prefix}/incdec.bash
+
+To enable the default bindings, also add:
+
+    source ${prefix}/incdec-bindings.bash
+"
