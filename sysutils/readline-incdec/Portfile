@@ -17,7 +17,7 @@ long_description    Readline bindings to increment and decrement numbers \
 
 checksums           rmd160  e90c0a6f9f4d98592e6e9a5b93a3b5e78801d4c6 \
                     sha256  e9e28ca126cda963ad8a0792a18e5119884137f60586e700bc7da74bce20e413 \
-                    size    664
+                    size    339464
 
 use_configure       no
 build {}
