@@ -16,7 +16,7 @@
 
 file="$1"
 
-rmd160="$(openssl dgst -sha256 "$file" | cut -d ' ' -f 2)"
+rmd160="$(openssl dgst -rmd160 "$file" | cut -d ' ' -f 2)"
 sha256="$(shasum -a 256 "$file" | cut -d ' ' -f 1)"
 size="$(wc -c "$file" | awk '{ print $1 }')"
 
