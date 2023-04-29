@@ -1,0 +1,44 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at https://mozilla.org/MPL/2.0/.
+
+PortSystem          1.0
+PortGroup           github 1.0
+PortGroup           java 1.0
+
+github.setup        teddywing pdf-form-replace-font2 0.0.1 v
+github.tarball_from archive
+
+categories          print office
+platforms           darwin
+license             GPL-3+
+maintainers         @teddywing
+
+description         Replace fonts in a PDF's interactive form fields
+long_description    Update an existing PDF replacing the font used in its \
+                    interactive form fields with a different one.
+
+checksums           rmd160  c277e45c00c316a85ba46e547c34c26b273ff436 \
+                    sha256  32e122343e33c7bd1fc244b833e027f82e4eb33581bdbed86dab46b7a21ebe1e \
+                    size    17770
+
+supported_archs     noarch
+java.version        1.8+
+java.fallback       openjdk11
+
+depends_build       port:maven3
+
+use_configure       no
+
+set maven_local_repository ${worksrcpath}/.m2/repository
+pre-build {
+    file mkdir ${maven_local_repository}
+}
+
+build.target        package
+build.env           MVNFLAGS=-Dmaven.repo.local=${maven_local_repository} \
+                    prefix=${prefix}
+
+destroot.destdir    prefix=${destroot}${prefix}
