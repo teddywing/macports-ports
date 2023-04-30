@@ -20,9 +20,9 @@ description         Replace fonts in a PDF's interactive form fields
 long_description    Update an existing PDF replacing the font used in its \
                     interactive form fields with a different one.
 
-checksums           rmd160  c277e45c00c316a85ba46e547c34c26b273ff436 \
-                    sha256  32e122343e33c7bd1fc244b833e027f82e4eb33581bdbed86dab46b7a21ebe1e \
-                    size    17770
+checksums           rmd160  48c62db8e0237a758bd1cd5241bc347e92f49f45 \
+                    sha256  5cab2a7a71b224d19dfaeea23eea0dc010d07ff6a608bdc02b7e2e0300a8f09c \
+                    size    17787
 
 supported_archs     noarch
 java.version        1.8+
@@ -38,7 +38,8 @@ pre-build {
 }
 
 build.target        package
-build.env           MVNFLAGS=-Dmaven.repo.local=${maven_local_repository} \
+build.env           MVN=mvn3 \
+                    MVNFLAGS=-Dmaven.repo.local=${maven_local_repository} \
                     prefix=${prefix}
 
 destroot.destdir    prefix=${destroot}${prefix}
