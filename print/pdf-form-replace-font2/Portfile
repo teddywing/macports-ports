@@ -38,7 +38,7 @@ pre-build {
 }
 
 build.target        package
-build.env           MVN=mvn3 \
+build.args          MVN=mvn3 \
                     MVNFLAGS=-Dmaven.repo.local=${maven_local_repository} \
                     prefix=${prefix}
 
